@@ -1,0 +1,21 @@
+extends layout
+block content
+    .container
+      h1 QR Puzzle Administration
+      p Available passwords:
+      table.table
+          thead
+              tr: th ID
+                  th Password
+                  th Enable
+          tbody
+
+          each secret, i in secrets
+              if i == activeIndex
+                  tr.success: td #{i}
+                      td #{secret.key}
+                      td
+              else
+                  tr: td #{i}
+                      td #{secret.key}
+                      td: button.btn.btn-default Enable

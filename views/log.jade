@@ -1,0 +1,45 @@
+extends layout
+block content
+    - var dateToHours = function (dateString) {
+    -   var date = new Date(dateString);
+    -   var hours = date.getHours();
+    -   var minutes = date.getMinutes();
+    -   var seconds = date.getSeconds();
+    -   if (minutes < 10) {
+    -     minutes = "0" + minutes;
+    -   }
+    -   if (seconds < 10) {
+    -     seconds = "0" + seconds;
+    -   }
+    -   return hours + ":" + minutes + ":" + seconds;
+    - }
+    .container
+      h1 QR Puzzle Log
+      if views
+          p You opened <strong>#{views}</strong> URLs.
+      else
+          p You have opened no URLs yet.
+      p Your session ID is:
+          code #{id}
+      if log
+          table.table
+              thead
+                  tr: th ID
+                      th Index scanned
+                      th Letter
+                      th Date
+                      th Malicious
+                      th Secret Word
+              tbody
+                  each entry in log
+                      tr: td #{entry.num}
+                          td #{entry.keyidx}
+                          td #{entry.letter}
+                          td #{dateToHours(entry.time)}
+                          if entry.malicious
+                              td Yes
+                          else
+                              td No
+                          td #{secrets[entry.activeIndex]["key"]}
+      else
+          p Your log is empty.

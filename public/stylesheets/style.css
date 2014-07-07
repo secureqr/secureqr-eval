@@ -1,0 +1,16 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bigh1 {
+  font-size: 8em !important;
+}
+
+.bigp {
+  font-size: 6em !important;
+}
